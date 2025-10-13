@@ -240,7 +240,7 @@ const worksSeed = [
       "GitHub と Vercel による自動デプロイ"
     ],
     links: {
-      // website: "https://（デプロイ後のURL）",
+      website: "https://hellowportfolio.vercel.app/",
       github: "https://github.com/totsuka0405/my_portfolio_site"
     },
     screenshot: {
