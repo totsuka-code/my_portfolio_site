@@ -1,16 +1,50 @@
-# React + Vite
+# 🪄 Totsuka Hiromu Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Top](./public/images/works/portfolio/thumb.png)
 
-Currently, two official plugins are available:
+## 📝 概要
+このサイトは、戸塚啓夢（Totsuka Hiromu）が制作した  
+**個人ポートフォリオサイト** です。  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+これまでに開発した Web アプリ・ツール・ゲームなどをまとめ、  
+GitHub と Vercel を利用してホスティング・自動デプロイしています。  
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🧑‍💻 使用技術
+- **フレームワーク**: React + Vite  
+- **スタイル**: Tailwind CSS  
+- **アニメーション**: Framer Motion  
+- **UI コンポーネント**: Shadcn UI / Lucide Icons  
+- **ホスティング**: Vercel  
+- **バージョン管理**: Git / GitHub
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 主な機能
+- セクションごとのスクロール連動ナビゲーション
+- レスポンシブデザイン（PC / スマホ両対応）
+- 作品のジャンル・技術・年代によるフィルタリング
+- 画像キャプション対応のモーダルギャラリー
+- GitHub と Vercel による自動デプロイ
+
+---
+
+## 🖼️ 掲載作品のジャンル
+- Unity ゲーム
+- Python ツール
+- Web アプリ / Web サイト
+- このポートフォリオ自体（本サイト）
+
+---
+
+## 🛠️ 開発環境
+```bash
+# 依存関係インストール
+npm install
+
+# 開発サーバー起動
+npm run dev
+
+# ビルド
+npm run build
