@@ -219,6 +219,39 @@ const worksSeed = [
       alt: "Number Slide Puzzleのメイン画面：盤面とスライド操作UI",
       caption: "可解性を満たすシャッフルを実装した盤面のメイン画面（PC/WebGL）。"
     }
+  },
+  {
+    slug: "totsuka-portfolio",
+    title: "Totsuka Hiromu Portfolio",
+    summary: "React・Vite・Tailwind で制作した個人ポートフォリオサイト。Web・ツール・ゲームなどの自作制作物をまとめ、GitHub と Vercel による自動デプロイを実装しています。",
+    genre: ["Web"],
+    tech: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Vercel"],
+    platforms: ["Web"],
+    releasedAt: "2025-10-14",
+    status: "released",
+    team: "solo",
+    duration: "約1週間",
+    cover: "landscape",
+    role: ["Front-end", "Design", "Deploy"],
+    highlights: [
+      "レスポンシブデザイン対応",
+      "スクロール連動ヘッダーハイライト",
+      "モーダルでの画像キャプション表示",
+      "GitHub と Vercel による自動デプロイ"
+    ],
+    links: {
+      // website: "https://（デプロイ後のURL）",
+      github: "https://github.com/totsuka0405/my_portfolio_site"
+    },
+    screenshot: {
+      src: "/images/works/portfolio/thumb.png",
+      gallery: [
+        "/images/works/portfolio/thumb.png"
+      ],
+      captions: [
+        "トップページのスクリーンショット"
+      ]
+    }
   }
 ];
 
