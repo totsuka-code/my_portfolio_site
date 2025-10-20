@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect, useRef } from "react";
 
 const ACCENT = "#6E56CF";
 const EMAIL = "totsukahiromu@gmail.com";
-const GITHUB_URL = "https://github.com/totsuka0405?tab=repositories";
+const GITHUB_URL = "https://github.com/totsuka0405";
 const VISIBLE_ROWS = 2;
 const worksSeed = [
   {
