@@ -252,7 +252,32 @@ const worksSeed = [
         "トップページのスクリーンショット"
       ]
     }
+  },
+  {
+    slug: "braintq",
+    title: "BrainTQ",
+    summary:
+      "Unity製のモバイル向け脳トレーニングゲーム。クライアントエンジニアとして一部ミニゲームと共通フレームワークの実装に携わりました。",
+    genre: ["Game", "Education"],
+    tech: ["Unity", "C#"],
+    platforms: ["Android", "iOS"],
+    releasedAt: "2025-10-20",
+    status: "released",
+    team: "company",
+    role: ["Client Engineer"],
+    highlights: [
+      "複数認知分野のミニゲーム実装",
+      "共通フレームワークのクライアント側開発",
+      "リリース対応"
+    ],
+    links: {
+      playStore: "https://play.google.com/store/apps/details?id=com.axtechcare.BrainTQ&hl=ja",
+      appStore: "https://apps.apple.com/app/braintq/id6739625942"
+    },
+    cover: "portrait"
   }
+
+
 ];
 
 // -------- Skill groups --------
@@ -454,21 +479,64 @@ function FacetRow({ label, items, selected, onToggle }) {
   );
 }
 
-function PhoneMock({ children }) {
+function getInitials(title = "") {
+  const m = (title.match(/[A-Za-z]/g) || []);
+  if (m.length >= 2) return (m[0] + m[1]).toUpperCase();
+  if (m.length === 1) return m[0].toUpperCase();
+  return (title || "App").slice(0, 2);
+}
+
+function PlaceholderMedia({ title = "No Image", hint }) {
   return (
-    <div className="relative h-full w-auto aspect-[9/16] max-h-[88%]" aria-hidden={false}>
-      <div className="absolute inset-0 rounded-[22px] bg-white/90 border border-black/10 shadow-[inset_0_0_0_1px_rgba(0,0,0,.04),0_8px_30px_rgba(0,0,0,.16)]"/>
-      <div className="absolute inset-[4px] rounded-[18px] bg-gradient-to-b from-gray-100 to-gray-50"/>
-      <div className="absolute inset-[8px] rounded-xl overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(110,86,207,.20),transparent_35%),radial-gradient(circle_at_70%_60%,rgba(34,195,230,.20),transparent_35%)] grid place-items-center">
-        {children ? children : <span className="text-xs text-gray-600 select-none">スマホ画面イメージ</span>}
+    <div className="relative w-full h-full rounded-xl border border-gray-200 bg-white grid place-items-center">
+      <div className="text-center px-3">
+        <div className="text-sm font-semibold text-gray-800">{title}</div>
+        {hint ? <div className="mt-1 text-xs text-gray-500">{hint}</div> : null}
       </div>
     </div>
   );
 }
 
+function TextPreview({ title = "No Image", subtitle }) {
+  return (
+    <div className="relative w-full h-full grid place-items-center rounded-xl border border-gray-200 bg-white">
+      <div className="text-center px-3">
+        <div className="text-sm font-semibold text-gray-800">{title}</div>
+        {subtitle ? (
+          <div className="mt-1 text-xs text-gray-500">{subtitle}</div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+
+function PhoneMock({ children }) {
+  return (
+    <div className="relative aspect-[9/16] h-full max-h-full w-auto">
+      <div className="absolute inset-0 rounded-[22px] bg-white/90 border border-black/10 shadow-[inset_0_0_0_1px_rgba(0,0,0,.04),0_8px_30px_rgba(0,0,0,.16)]" />
+      <div className="absolute inset-[4px] rounded-[18px] bg-gradient-to-b from-gray-100 to-gray-50" />
+      <div className="absolute inset-[8px] rounded-xl overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(110,86,207,.20),transparent_35%),radial-gradient(circle_at_70%_60%,rgba(34,195,230,.20),transparent_35%)]">
+        <div className="w-full h-full grid place-items-center p-2">
+          {children ? (
+            <div className="w-full h-full grid place-items-center">
+              {children}
+            </div>
+          ) : (
+            <span className="text-xs text-gray-600 select-none">スマホ画面イメージ</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
 function WorkCard({ w, onOpen }) {
   const isPortrait = w.cover === 'portrait';
   const shot = w.screenshot;
+  const hasImage = Boolean(shot?.src || shot?.thumb || shot?.url);
 
   return (
     <div
@@ -485,34 +553,61 @@ function WorkCard({ w, onOpen }) {
       aria-label={`${w.title} の詳細を開く`}
     >
       {/* プレビュー */}
-      <div className="relative w-full aspect-[2/1] md:aspect-video bg-gray-100 overflow-hidden">
-        {shot?.src || shot?.thumb || shot?.url ? (
-          isPortrait ? (
-            <div className="absolute inset-0 grid place-items-center p-4">
-              <PhoneMock>
+      <div className="relative w-full aspect-[2/1] md:aspect-video bg-gray-50 overflow-hidden">
+        <div className="absolute inset-0 grid place-items-center p-3">
+          {(() => {
+            const isPortrait = w.cover === 'portrait';
+            const shot = w.screenshot;
+            const hasImage = Boolean(shot?.src || shot?.thumb || shot?.url);
+
+            if (isPortrait) {
+            return (
+              <div className="h-full max-h-[92%]">
+                <PhoneMock>
+                  {hasImage ? (
+                    <img
+                      src={shot.src || shot.thumb || shot.url}
+                      alt={shot.alt ?? w.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-full grid place-items-center">
+                      <div className="text-center px-3 translate-x-[-8px]"> {/* ← ここを調整 */}
+                        <div className="text-sm font-semibold text-gray-800">{w.title}</div>
+                        <div className="mt-1 text-xs text-gray-500">
+                          {(w.platforms && w.platforms.join(' / ')) || 'Mobile Game'}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </PhoneMock>
+              </div>
+            );
+
+            }
+            if (hasImage) {
+              return (
                 <img
                   src={shot.src || shot.thumb || shot.url}
                   alt={shot.alt ?? w.title}
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-cover"
                 />
-              </PhoneMock>
-            </div>
-          ) : (
-            <img
-              src={shot.src || shot.thumb || shot.url}
-              alt={shot.alt ?? w.title}
-              loading="lazy"
-              decoding="async"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          )
-        ) : (
-          <div className="absolute inset-0 grid place-items-center text-sm text-gray-500">
-            No Image
-          </div>
-        )}
+              );
+            }
+            return (
+              <div className="w-full h-full">
+                <PlaceholderMedia
+                  title={w.title}
+                  hint={(w.genre && w.genre.join(' / ')) || (w.platforms && w.platforms.join(' / ')) || 'Project'}
+                />
+              </div>
+            );
+          })()}
+        </div>
       </div>
 
       {/* 本文 */}
@@ -701,50 +796,74 @@ function DetailModal({ open, onClose, w }) {
           作品の詳細を表示するモーダルダイアログです。Escキーで閉じられます。
         </p>
 
-        {/* 左：画像エリア（上に余白を確保し、画像はやや下に） */}
-        <div
-          className="relative bg-[#F7FAFD] md:border-r md:border-gray-100
-                     flex flex-col items-center justify-start p-4 md:p-6 gap-3 min-h-0
-                     pt-12 md:pt-8"
-        >
-          {items.length === 0 ? (
-            <div className="px-3 py-1.5 rounded-lg bg-white/90 border border-white/60 shadow-sm mt-6">
-              <span id="work-dialog-title" className="text-base md:text-lg font-semibold text-slate-900">
-                {w.title}
-              </span>
-            </div>
-          ) : (
-            <>
-              {/* 画像コンテナ：高さ上限を明示してどの画面でも崩さない */}
+        {/* 左：画像エリア */}
+        <div className="relative bg-[#F7FAFD] md:border-r md:border-gray-100 flex flex-col items-center justify-start p-4 md:p-6 gap-3 min-h-0 pt-12 md:pt-8">
+          {(() => {
+            const isPortrait = w.cover === "portrait";
+            const hasItems = items.length > 0;
+            const H = "h-[36svh] md:h-[64svh] max-h-[70svh]";
+
+            if (!hasItems) {
+              // 画像なし
+              if (isPortrait) {
+                return (
+                  <div className={`w-full ${H} grid place-items-center`}>
+                    <div className="h-full max-h-full">
+                      <PhoneMock>
+                        <div className="w-full h-full grid place-items-center p-2">
+                          <div className="text-center px-3">
+                            <div className="text-sm font-semibold text-gray-800">{w.title}</div>
+                            <div className="mt-1 text-xs text-gray-500">
+                              {(w.platforms && w.platforms.join(' / ')) || 'Mobile Game'}
+                            </div>
+                          </div>
+                        </div>
+                      </PhoneMock>
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <div className={`w-full ${H}`}>
+                  <PlaceholderMedia
+                    title={w.title}
+                    hint={(w.platforms && w.platforms.join(' / ')) || 'No image available'}
+                  />
+                </div>
+              );
+            }
+
+            // 画像あり
+            const current = items[imgIdx];
+            return (
               <button
                 type="button"
                 onClick={handleImageClick}
-                className="relative group outline-none w-full grid place-items-center"
+                className={`relative group outline-none w-full grid place-items-center ${H}`}
                 aria-label="次の画像を表示"
                 title={items.length > 1 ? "画像をクリックで次へ" : undefined}
-                style={{}}
               >
-                <div className="w-full h-[36svh] md:h-[64svh] max-h-[64svh] md:max-h-[70svh] grid place-items-center">
-                  {isPortrait ? (
+                {isPortrait ? (
+                  <div className="h-full max-h-full">
                     <PhoneMock>
                       <img
                         src={current.src}
                         alt={current.alt || w.title}
                         decoding="async"
                         loading="eager"
-                        className="h-full w-auto max-h-full object-contain"
+                        className="max-h-full max-w-full object-contain"
                       />
                     </PhoneMock>
-                  ) : (
-                    <img
-                      src={current.src}
-                      alt={current.alt || w.title}
-                      decoding="async"
-                      loading="eager"
-                      className="max-h-full w-auto object-contain"
-                    />
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  <img
+                    src={current.src}
+                    alt={current.alt || w.title}
+                    decoding="async"
+                    loading="eager"
+                    className="max-h-full w-auto object-contain"
+                  />
+                )}
 
                 {items.length > 1 && (
                   <span className="absolute bottom-2 right-2 rounded-full bg-black/60 text-white text-xs px-2 py-0.5">
@@ -752,16 +871,10 @@ function DetailModal({ open, onClose, w }) {
                   </span>
                 )}
               </button>
-
-              {/* キャプション：長文でも折り返し、はみ出さない */}
-              {(current.caption || current.alt) && (
-                <div className="max-w-[92%] text-center text-xs md:text-sm text-gray-600 leading-snug break-words">
-                  {current.caption || current.alt}
-                </div>
-              )}
-            </>
-          )}
+            );
+          })()}
         </div>
+
 
         {/* 右：本文（専用スクロール） */}
         <div className="min-h-0 flex flex-col">
@@ -1292,7 +1405,7 @@ export default function Portfolio() {
     window.addEventListener('resize', updateCols);
     return () => window.removeEventListener('resize', updateCols);
   }, []);
-
+  const helloReveal = useReveal();
   const visibleWorks = useMemo(
     () => (showAllWorks ? filtered : filtered.slice(0, cols * VISIBLE_ROWS)),
     [showAllWorks, filtered, cols]
@@ -1364,7 +1477,7 @@ export default function Portfolio() {
 
       {/* Hello */}
       <section
-        ref={useReveal().ref}
+        ref={helloReveal.ref}
         className={classNames(
           "relative overflow-hidden mx-auto max-w-none px-0 pt-14 pb-14 transform-gpu transition-all",
           "motion-reduce:transition-none motion-reduce:translate-y-0"
