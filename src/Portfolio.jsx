@@ -1058,15 +1058,6 @@ function CustomCursor() {
   return null;
 }
 
-function useSmoothNav() {
-  const onNav = (e, id) => {
-    e.preventDefault();
-    const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-  return onNav;
-}
-
 function useSectionSpy(sectionIds, rootMargin = "-45% 0px -55%") {
   const [activeId, setActiveId] = useState(sectionIds?.[0] ?? null);
   const observerRef = useRef(null);
@@ -1371,7 +1362,7 @@ export default function Portfolio() {
         </div>
       </header>
 
-      {/* Helo */}
+      {/* Hello */}
       <section
         ref={useReveal().ref}
         className={classNames(
@@ -1410,7 +1401,7 @@ export default function Portfolio() {
       {/* 名前 */}
       <div className="mt-10 mb-6 text-center">
         <h2 className="text-2xl font-semibold text-gray-900 tracking-wide">戸塚 啓夢</h2>
-        <p className="text-sm text-gray-500 tracking-wider">Totsuka Hitomu</p>
+        <p className="text-sm text-gray-500 tracking-wider">Totsuka Hiromu</p>
       </div>
 
       <div className="max-w-3xl mx-auto text-center text-gray-700 leading-relaxed space-y-5">
@@ -1575,7 +1566,7 @@ export default function Portfolio() {
 
     <footer className="border-t border-gray-200 bg-white">
       <div className="mx-auto max-w-[1140px] px-5 h-16 flex items-center justify-between text-sm text-gray-600">
-        <span>© {new Date().getFullYear()} Your Name</span>
+        <span>© {new Date().getFullYear()} Totsuka Hiromu</span>
         <div className="flex items-center gap-4">
           <a className="hover:text-gray-900" href={GITHUB_URL} target="_blank" rel="noreferrer noopener">GitHub</a>
           <a className="hover:text-gray-900" href="#about"   onClick={(e)=>onNav(e,'#about')}>About</a>
