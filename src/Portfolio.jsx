@@ -12,7 +12,7 @@ const worksSeed = [
     genre: ["Game"],
     tech: ["Unity", "C#"],
     platforms: ["PC", "WebGL"],
-    releasedAt: "2024-10-01",
+    releasedAt: "2024-12-25",
     status: "released",
     team: "group",
     duration: "2024年4月〜12月",
@@ -30,18 +30,18 @@ const worksSeed = [
     },
     screenshot: {
       src: "/images/works/kakureasobi/thumb.png",
-      alt: "隠遊（Kakureasobi）のメイン画面：探索シーン",
-      caption: "災害現場を探索するメインシーン（PC/WebGL対応）。",
+      alt: "隠遊（Kakureasobi）のゲームタイトル画面",
+      caption: "ゲームタイトル画面",
       gallery: [
         {
           src: "/images/works/kakureasobi/shot-1.png",
-          alt: "仕掛けが配置された通路のシーン",
-          caption: "ギミックと仕掛けを回避しながら進む場面。"
+          alt: "ゲーム内リビング画面",
+          caption: "ゲーム内ステージのリビング"
         },
         {
           src: "/images/works/kakureasobi/shot-2.png",
-          alt: "エンディング画面",
-          caption: "脱出成功後のエンディング表示。"
+          alt: "災害中の画面",
+          caption: "災害に巻き込まれている画面"
         }
       ]
     }
@@ -53,7 +53,7 @@ const worksSeed = [
     genre: ["Tool"],
     tech: ["Python"],
     platforms: ["Windows", "macOS"],
-    releasedAt: "2025-09-01",
+    releasedAt: "2025-09-25",
     status: "released",
     team: "solo",
     duration: "1日",
@@ -96,13 +96,13 @@ const worksSeed = [
     },
     screenshot: {
       src: "/images/works/working-hours/thumb.png",
-      alt: "Working Hours Calculation Appのメイン画面：勤務時間の記録一覧",
-      caption: "勤務時間の記録・集計を行うメインビュー（CSV入出力対応）。",
+      alt: "Working Hours Calculation Appのカレンダー入力画面",
+      caption: "カレンダーから勤務時間の入力を行う画面",
       gallery: [
         {
           src: "/images/works/working-hours/shot-1.png",
-          alt: "勤怠入力フォーム画面",
-          caption: "日時・休憩を含む入力フォームと自動集計のプレビュー。"
+          alt: "打刻画面",
+          caption: "その日の開始、終了時刻を打刻する画面"
         }
       ]
     }
@@ -110,11 +110,11 @@ const worksSeed = [
   {
     slug: "draftbox",
     title: "Draftbox",
-    summary: "下書きを比較しながら書けるシンプルなWebアプリ。文字数カウントとローカル保存に対応。",
+    summary: "下書きを複数保存でき、文字数を比較できるシンプルなWebアプリ。文字数カウントとローカル保存に対応。",
     genre: ["Web"],
     tech: ["JavaScript", "HTML", "CSS", "Supabase", "Vercel"],
     platforms: ["Web"],
-    releasedAt: "2025-08-01",
+    releasedAt: "2025-08-26",
     status: "released",
     team: "solo",
     duration: "4日",
@@ -143,7 +143,7 @@ const worksSeed = [
     genre: ["Game"],
     tech: ["Unity", "C#"],
     platforms: ["PC"],
-    releasedAt: "2024-11-01",
+    releasedAt: "2024-11-18",
     status: "released",
     team: "solo",
     duration: "3日",
@@ -160,8 +160,8 @@ const worksSeed = [
     },
     screenshot: {
       src: "/images/works/memorize-face/thumb.png",
-      alt: "Memorize Faceのメイン画面（縦長UI）",
-      caption: "タイトル／メイン画面。縦長レイアウトに最適化。"
+      alt: "Memorize Faceのゲーム画面",
+      caption: "ゲーム中の画面"
     }
   },
   {
@@ -171,7 +171,7 @@ const worksSeed = [
     genre: ["Game"],
     tech: ["Unity", "C#"],
     platforms: ["PC"],
-    releasedAt: "2025-05-01",
+    releasedAt: "2025-05-28",
     status: "released",
     team: "solo",
     duration: "4日",
@@ -199,7 +199,7 @@ const worksSeed = [
     genre: ["Game"],
     tech: ["Unity", "C#"],
     platforms: ["PC", "WebGL"],
-    releasedAt: "2024-11-01",
+    releasedAt: "2024-10-27",
     status: "released",
     team: "solo",
     duration: "4日",
