@@ -1649,27 +1649,82 @@ export default function Portfolio() {
         </a>
       </Reveal>
 
+      {/* フォーム */}
       <Reveal
         as="form"
-        onSubmit={(e)=>{ e.preventDefault(); alert("送信しました。内容を確認のうえ返信いたします。"); e.currentTarget.reset(); }}
+        // 送信ハンドラ：/api/contact にPOST
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const form = e.currentTarget;
+
+          // name属性で値を取る
+          const formData = new FormData(form);
+          const payload = {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            message: formData.get("message"),
+          };
+
+          try {
+            const res = await fetch("/api/contact", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            });
+
+            if (res.ok) {
+              alert("送信しました。ありがとうございました。");
+              form.reset();
+            } else {
+              alert("送信に失敗しました。時間をおいて再度お試しください。");
+            }
+          } catch (err) {
+            console.error(err);
+            alert("送信中にエラーが発生しました。");
+          }
+        }}
         className="mt-6 grid md:grid-cols-2 gap-6 max-w-3xl mx-auto"
         delay={120}
       >
         <div className="grid gap-1 text-left">
-          <label className="text-sm text-gray-700">お名前</label>
-          <input required className="border border-gray-200 rounded-xl px-3 py-2 bg-white"/>
+          <label className="text-sm text-gray-700" htmlFor="contact-name">お名前</label>
+          <input
+            id="contact-name"
+            name="name"
+            required
+            className="border border-gray-200 rounded-xl px-3 py-2 bg-white"
+          />
         </div>
         <div className="grid gap-1 text-left">
-          <label className="text-sm text-gray-700">メール</label>
-          <input type="email" required className="border border-gray-200 rounded-xl px-3 py-2 bg-white"/>
+          <label className="text-sm text-gray-700" htmlFor="contact-email">メール</label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            required
+            className="border border-gray-200 rounded-xl px-3 py-2 bg-white"
+          />
         </div>
         <div className="md:col-span-2 grid gap-1 text-left">
-          <label className="text-sm text-gray-700">メッセージ</label>
-          <textarea rows={6} placeholder="ご用件やご感想、連絡先などをご自由にお書きください。" className="border border-gray-200 rounded-xl px-3 py-2 bg-white"/>
+          <label className="text-sm text-gray-700" htmlFor="contact-message">メッセージ</label>
+          <textarea
+            id="contact-message"
+            name="message"
+            rows={6}
+            placeholder="ご用件やご感想、連絡先などをご自由にお書きください。"
+            className="border border-gray-200 rounded-xl px-3 py-2 bg-white"
+          />
         </div>
         <div className="md:col-span-2 flex items-center justify-between">
           <p className="text-xs text-gray-500">※ 送信内容は確認後、メールにてご連絡いたします。</p>
-          <button className="px-5 py-2.5 rounded-xl bg-gray-900 text-white hover:opacity-90">送信</button>
+          <button
+            type="submit"
+            className="px-5 py-2.5 rounded-xl bg-gray-900 text-white hover:opacity-90"
+          >
+            送信
+          </button>
         </div>
       </Reveal>
     </Reveal>
