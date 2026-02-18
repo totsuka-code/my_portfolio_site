@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect, useRef } from "react";
 
 const ACCENT = "#6E56CF";
 const EMAIL = "totsukahiromu@gmail.com";
-const GITHUB_URL = "https://github.com/totsuka0405";
+const GITHUB_URL = "https://github.com/totsuka-code";
 const VISIBLE_ROWS = 2;
 const worksSeed = [
   {
@@ -26,7 +26,7 @@ const worksSeed = [
     ],
     links: {
       website: "https://unityroom.com/games/kakureasobi",
-      github: "https://github.com/totsuka0405/STI_Game/releases/tag/v1.0.2"
+      github: "https://github.com/totsuka-code/STI_Game/releases/tag/v1.0.2"
     },
     screenshot: {
       src: "/images/works/kakureasobi/thumb.png",
@@ -65,7 +65,7 @@ const worksSeed = [
       "GUIベースの簡単操作"
     ],
     links: {
-      github: "https://github.com/totsuka0405/folderdump/releases/tag/v1.0.1"
+      github: "https://github.com/totsuka-code/folderdump/releases/tag/v1.0.1"
     },
     screenshot: {
       src: "/images/works/folderdump/thumb.png",
@@ -92,7 +92,7 @@ const worksSeed = [
       "Slack 連携による勤怠補助"
     ],
     links: {
-      github: "https://github.com/totsuka0405/Working_hours_calculation_application/releases/tag/v1.0.0"
+      github: "https://github.com/totsuka-code/Working_hours_calculation_application/releases/tag/v1.0.0"
     },
     screenshot: {
       src: "/images/works/working-hours/thumb.png",
@@ -128,7 +128,7 @@ const worksSeed = [
     ],
     links: {
       website: "https://draftbox-pearl.vercel.app/",
-      github: "https://github.com/totsuka0405/draftbox"
+      github: "https://github.com/totsuka-code/draftbox"
     },
     screenshot: {
       src: "/images/works/draftbox/thumb.png",
@@ -156,7 +156,7 @@ const worksSeed = [
     ],
     links: {
       website: "https://unityroom.com/games/memorize_face",
-      github: "https://github.com/totsuka0405/Memorize_Face"
+      github: "https://github.com/totsuka-code/Memorize_Face"
     },
     screenshot: {
       src: "/images/works/memorize-face/thumb.png",
@@ -184,7 +184,7 @@ const worksSeed = [
     ],
     links: {
       website: "https://unityroom.com/games/luck_or_bust",
-      github: "https://github.com/totsuka0405/Luck_or_Bust"
+      github: "https://github.com/totsuka-code/Luck_or_Bust"
     },
     screenshot: {
       src: "/images/works/luck-or-bust/thumb.png",
@@ -212,7 +212,7 @@ const worksSeed = [
     ],
     links: {
       website: "https://unityroom.com/games/slide_puzzle_0",
-      github: "https://github.com/totsuka0405/NumberSlidePuzzle"
+      github: "https://github.com/totsuka-code/NumberSlidePuzzle"
     },
     screenshot: {
       src: "/images/works/number-slide-puzzle/thumb.png",
@@ -241,7 +241,7 @@ const worksSeed = [
     ],
     links: {
       website: "https://hellowportfolio.vercel.app/",
-      github: "https://github.com/totsuka0405/my_portfolio_site"
+      github: "https://github.com/totsuka-code/my_portfolio_site"
     },
     screenshot: {
       src: "/images/works/portfolio/thumb.png",
